@@ -7,7 +7,7 @@
 
 import Foundation;
 
-extension Set where Element: Hashable {
+public extension Set where Element: Hashable {
 	@available(*, deprecated, message: "This is just a reminder - you shuld really use the .insert() function call.")
 	mutating func put(_ element: Element) -> Void {
 		self.insert(element);
