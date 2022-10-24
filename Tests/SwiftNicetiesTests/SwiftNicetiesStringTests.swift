@@ -30,5 +30,11 @@ final class SwiftNicetiesStringTests: XCTestCase {
 		
 		XCTAssertEqual(characters.indexOf("😊"), 0);
 	}
+
+	func testSha256() throws {
+		let contents: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+		let sha256: String = "2D8C2F6D978CA21712B5F6DE36C9D31FA8E96A4FA5D8FF8B0188DFB9E7C171BB".lowercased();
+		XCTAssertEqual(sha256, contents.sha256())
+	}
 	
 }

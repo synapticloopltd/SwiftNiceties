@@ -1,10 +1,12 @@
-import Foundation;
 //
 //  SwiftNicetiesString.swift
 //
 //
 //  Created by synapticloop on 13/10/2022.
 //
+
+import Foundation;
+import CommonCrypto;
 
 extension String {
 	/**
@@ -80,5 +82,46 @@ extension String {
 	
 	func indexOf(_ str: String, options: String.CompareOptions = []) -> Int? {
 		return(range(of: str, options: options)?.lowerBound.utf16Offset(in: self))
+	}
+	
+	/**
+	 Lowercase this String
+	 
+	  - Returns:
+	 */
+	public func toLowerCase() -> String {
+		return(self.lowercased());
+	}
+	
+	/**
+	 Lowercase this string
+	 
+	  - Returns: The lower cased version of this string for the optional locale.
+	 */
+	public func toLowerCase(_ locale: Locale?) -> String {
+		return(self.lowercased(with: locale));
+	}
+	
+	/**
+	 Trim whitespace characters from the beginning and end of a string
+	 
+	 - Returns: the string trimmed of whitespace and newlines
+	 */
+	public func trim() -> String {
+		return(self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+	}
+
+	/**
+	 Generate a SHA256 hash for a String
+
+	 - Returns: the SHA 256 hash for the String
+	 */
+	public func sha256() -> String {
+		let data = Data(self.utf8)
+		var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+		data.withUnsafeBytes {
+			_ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
+		}
+		return hash.map { String(format: "%02x", $0) }.joined()
 	}
 }
