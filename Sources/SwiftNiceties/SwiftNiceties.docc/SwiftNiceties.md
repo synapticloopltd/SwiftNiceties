@@ -26,10 +26,9 @@ you can now just call:
 ```swift
 substring(_ beginIndex: Int, _ endIndex: Int) -> String
 ```
+## Niceties
 
-## String niceties
-
-See file `SwiftNicetiesString.swift`
+### String niceties
 
 ```swift
 func substring(_ beginIndex: Int) -> String
