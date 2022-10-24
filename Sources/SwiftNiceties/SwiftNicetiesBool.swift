@@ -9,7 +9,7 @@ import Foundation;
 
 public extension Bool {
 
-	fileprivate static let TRUE_VALUES: Set<String> = [
+	static let TRUE_VALUES: Set<String> = [
 		"true",
 		"1"
 	]
@@ -21,7 +21,7 @@ public extension Bool {
 	 *
 	 * - Parameter description: A string representation of the Boolean value.
 	 */
-	init(fromString: String) {
+	@inlinable init(fromString: String) {
 		if Bool.TRUE_VALUES.contains(fromString.lowercased()) {
 			self = true;
 		} else {
