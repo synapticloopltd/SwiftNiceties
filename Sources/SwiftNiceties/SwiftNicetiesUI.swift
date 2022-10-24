@@ -8,14 +8,14 @@
 import Foundation;
 import SwiftUI;
 
-@available(macOS 10.15, *)
+@available(macOS 10.15, iOS 13.0, *)
 public extension View {
 	func roundedInnerShadow() -> some View {
 		modifier(RoundedInnerShadow());
 	}
 }
 
-@available(macOS 10.15.0, *)
+@available(macOS 10.15, iOS 13.0, *)
 private struct RoundedInnerShadow: ViewModifier {
 	func body(content: Content) -> some View {
 		content
