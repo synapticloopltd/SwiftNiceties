@@ -7,7 +7,7 @@
 
 import Foundation;
 
-struct Random {
+public struct Random {
 	/**
 	 
 	 - Returns: a random number between 0 (inclusive) and Int.max (exclusive)
