@@ -111,6 +111,11 @@ extension String {
 		return(self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
 	}
 
+	@available(*, deprecated, message: "This is just a reminder - you SHOULD really use the .count member access call.")
+	public func length() -> Int {
+		return(self.count);
+	}
+
 	/**
 	 Generate a SHA256 hash for a String
 
