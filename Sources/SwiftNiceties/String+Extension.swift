@@ -30,11 +30,11 @@ extension String {
 	 calling this method.
 	 
 	 - Parameters:
-	     - beginIndex: the index to start from (starting at zero '0') inclusive
-	     - endIndex: the ending index, exclusive.
+	 - beginIndex: the index to start from (starting at zero '0') inclusive
+	 - endIndex: the ending index, exclusive.
 
 	 - Returns: The substring from the beginning index to the end index of the string
-	*/
+	 */
 	func substring(_ beginIndex: Int) -> String {
 		return(substring(beginIndex, self.count));
 	}
@@ -87,7 +87,7 @@ extension String {
 	/**
 	 Lowercase this String
 	 
-	  - Returns:
+	 - Returns:
 	 */
 	public func toLowerCase() -> String {
 		return(self.lowercased());
@@ -96,7 +96,7 @@ extension String {
 	/**
 	 Lowercase this string
 	 
-	  - Returns: The lower cased version of this string for the optional locale.
+	 - Returns: The lower cased version of this string for the optional locale.
 	 */
 	public func toLowerCase(_ locale: Locale?) -> String {
 		return(self.lowercased(with: locale));
@@ -128,5 +128,42 @@ extension String {
 			_ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
 		}
 		return hash.map { String(format: "%02x", $0) }.joined()
+	}
+
+	subscript (i: Int) -> Character {
+		return self[index(startIndex, offsetBy: i)]
+	}
+
+	subscript (bounds: CountableRange<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		if end < start { return "" }
+		return self[start..<end]
+	}
+
+	subscript (bounds: CountableClosedRange<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		if end < start { return "" }
+		return self[start...end]
+	}
+
+	subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(endIndex, offsetBy: -1)
+		if end < start { return "" }
+		return self[start...end]
+	}
+
+	subscript (bounds: PartialRangeThrough<Int>) -> Substring {
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		if end < startIndex { return "" }
+		return self[startIndex...end]
+	}
+
+	subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		if end < startIndex { return "" }
+		return self[startIndex..<end]
 	}
 }

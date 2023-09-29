@@ -20,4 +20,14 @@ public extension Set where Element: Hashable {
 		self.insert(element);
 	}
 
+	@available(*, deprecated, message: "This is just a reminder - you SHOULD really use the .insert() function call.")
+	mutating func add(_ element: Element) -> Void {
+		self.insert(element);
+	}
+
+	@available(*, deprecated, message: "This is just a reminder - you SHOULD really use the ..update(with: Hashable) function call.")
+	mutating func addAll(_ elements: any Hashable) -> Void {
+		self.update(with: elements as! Element);
+	}
+
 }
