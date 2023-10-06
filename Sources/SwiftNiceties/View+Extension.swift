@@ -9,6 +9,7 @@ import Foundation;
 import SwiftUI;
 
 @available(macOS 10.15, iOS 13.0, *)
+
 public extension View {
 	func roundedInnerShadow() -> some View {
 		modifier(RoundedInnerShadow());
@@ -16,6 +17,16 @@ public extension View {
 }
 
 @available(macOS 10.15, iOS 13.0, *)
+extension View {
+	public func addRoundedBorder<S>(_ content: S, width: CGFloat = 1, cornerRadius: CGFloat) -> some View where S : ShapeStyle {
+		let roundedRect = RoundedRectangle(cornerRadius: cornerRadius)
+		return clipShape(roundedRect)
+			.overlay(roundedRect.strokeBorder(content, lineWidth: width))
+	}
+}
+
+@available(macOS 10.15, iOS 13.0, *)
+
 private struct RoundedInnerShadow: ViewModifier {
 	func body(content: Content) -> some View {
 		content
