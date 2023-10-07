@@ -79,9 +79,13 @@ public class SNCalendar {
 	/// Set the time in milliseconds - note that this method divides the passed in
 	/// method by 1000 as the Swift call returns a 1000 tiems the actual value
 	///
-	/// - Parameter millis: <#millis description#>
+	/// - Parameter millis: The number of milliseconds
 	public func setTimeInMillis(millis: Int64) {
 		date = Date(timeIntervalSince1970: TimeInterval(millis/1000));
+	}
+
+	public func setTimeInMillis(doubleMillis: Double) {
+		date = Date(timeIntervalSince1970: TimeInterval(Int64(doubleMillis)));
 	}
 
 	/**
