@@ -78,7 +78,7 @@ public class SNCalendar {
 	
 	/// Set the time in milliseconds - note that this method divides the passed in
 	/// method by 1000 as the Swift call returns a 1000 tiems the actual value
-	/// 
+	///
 	/// - Parameter millis: <#millis description#>
 	public func setTimeInMillis(millis: Int64) {
 		date = Date(timeIntervalSince1970: TimeInterval(millis/1000));
@@ -89,9 +89,11 @@ public class SNCalendar {
 	 * based on the calendar's rules. For example, to subtract 5 days from
 	 * the current time of the calendar, you can achieve it by calling:
 	 * <p>{@code add(SNCalendar.DAY_OF_MONTH, -5)}.
-	 *
-	 * @param field the calendar field.
-	 * @@param amount the amount of date or time to be added to the field.
+	 * 
+	 * - Parameters:
+	 *   - field: The field to add to or subtract from see SNCalendar.Field.*
+	 *   - amount: The amount to add (or to subtract if negative)
+	 * - Returns: Void
 	 */
 
 	public func add(_ field: Field, _ amount: Int) throws -> Void {
@@ -103,14 +105,21 @@ public class SNCalendar {
 			case SNCalendar.Field.YEAR:
 				date = Calendar.current.date(byAdding: .year, value: amount, to: date)!
 				break;
+
 			case SNCalendar.Field.MONTH:
 				date = Calendar.current.date(byAdding: .month, value: amount, to: date)!
 				break;
+
 			case SNCalendar.Field.DATE:
 				fallthrough;
 			case SNCalendar.Field.DAY_OF_MONTH:
 				date = Calendar.current.date(byAdding: .day, value: amount, to: date)!
 				break;
+
+			case SNCalendar.Field.HOUR:
+				fallthrough
+			case SNCalendar.Field.HOUR_OF_DAY:
+				date = Calendar.current.date(byAdding: .hour, value: amount, to: date)!
 
 			default:
 				throw NSError();
