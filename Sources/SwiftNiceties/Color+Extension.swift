@@ -14,7 +14,8 @@ import SwiftUI;
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public extension Color {
 	/**
-	 Convert
+	 Instantiate a SwiftUI.Color from a HEX value (starting with a '#'
+
 	 - Parameter hex: The hex color in the form of #FFFFFF - note that the '#'
 	 character will be stripped off
 	 */
