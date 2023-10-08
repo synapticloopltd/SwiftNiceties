@@ -26,7 +26,7 @@ final class SwiftNicetiesSNCalendarTests: XCTestCase {
 		// this is the 28th Feb 2004 (which is a leap year...)
 
 		let calendar: SNCalendar = SNCalendar.getInstance();
-		calendar.setTimeInMillis(millis: 1077886800);
+		calendar.setTimeInMillis(millis: 1077886800000);
 
 		try calendar.add(SNCalendar.Field.DAY_OF_MONTH, 1);
 		try XCTAssertEqual(29, calendar.get(SNCalendar.Field.DAY_OF_MONTH));

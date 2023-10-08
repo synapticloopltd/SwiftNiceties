@@ -75,7 +75,7 @@ extension String {
 	func toCharArray() -> [Character] {
 		return([Character](self));
 	}
-	
+
 	func contains(_ str: String, options: String.CompareOptions = []) -> Bool {
 		return(nil != indexOf(str, options: options));
 	}
