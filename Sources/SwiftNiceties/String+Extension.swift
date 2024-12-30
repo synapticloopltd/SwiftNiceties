@@ -76,6 +76,24 @@ extension String {
 		return([Character](self));
 	}
 
+	func charAt(_ index: Int) -> Character {
+		return("L");
+	}
+
+	/// Return whether the passed in string is contained within this string
+	/// - Parameter str: The string to test against
+	///
+	/// - Returns: Whether the passed in string is contained within this string
+	func contains(_ str: String) -> Bool {
+		return(nil != indexOf(str, options: []));
+	}
+
+	/// Return whether on string is contained with another string
+	/// - Parameters:
+	///   - str: The string to search for
+	///   - options: See NSString.CompareOptions - this will be empty if not passed in
+	///   
+	/// - Returns: Whether the string contains the other string
 	func contains(_ str: String, options: String.CompareOptions = []) -> Bool {
 		return(nil != indexOf(str, options: options));
 	}
@@ -111,7 +129,7 @@ extension String {
 		return(self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
 	}
 
-	@available(*, deprecated, message: "This is just a reminder - you SHOULD really use the .count member access call.")
+	@available(*, deprecated, message: "This is just an informational reminder - you SHOULD really use the .count member access call. [This method will not be removed]")
 	public func length() -> Int {
 		return(self.count);
 	}

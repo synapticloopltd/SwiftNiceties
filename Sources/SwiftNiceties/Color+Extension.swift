@@ -13,12 +13,10 @@ import SwiftUI;
  */
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public extension Color {
-	/**
-	 Instantiate a SwiftUI.Color from a HEX value (starting with a '#'
-
-	 - Parameter hex: The hex color in the form of #FFFFFF - note that the '#'
-	 character will be stripped off
-	 */
+	/// Instantiate a SwiftUI.Color from a HEX value (starting with a '#')
+	/// 
+	/// - Parameter hex: The hex color in the form of #FFFFFF - note that the '#'
+	/// character will be stripped off
 	init(hex: String) {
 		let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
 		var int: UInt64 = 0

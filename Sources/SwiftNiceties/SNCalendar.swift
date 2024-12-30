@@ -19,6 +19,8 @@ public class SNCalendar {
 	// the decimal point
 	public var date: Date;
 
+	/// This enum describes the calendar fields that can be accessed, get, set, or
+	/// added to
 	public enum Field {
 		case
 		ERA,
@@ -28,10 +30,10 @@ public class SNCalendar {
 		WEEK_OF_MONTH,
 		DATE,
 		DAY_OF_MONTH,
-		DAY_OF_YEAR, // may not be available
-		DAY_OF_WEEK, // may not be available
+		//		DAY_OF_YEAR, // may not be available
+		DAY_OF_WEEK,
 		DAY_OF_WEEK_IN_MONTH,
-		AM_PM, // may not be available
+		//		AM_PM, // may not be available
 		HOUR,
 		HOUR_OF_DAY,
 		MINUTE,
@@ -42,7 +44,7 @@ public class SNCalendar {
 	private init() {
 		date = Date();
 	}
-	
+
 	/// Get an instance of the Calendar, set to the current date and time
 	///
 	/// - Returns: The SNCalendar instance
@@ -61,10 +63,10 @@ public class SNCalendar {
 	public func getTime() -> Date {
 		return(date);
 	}
-	
+
 	/// Set the time in milliseconds - note that this method divides the passed in
 	/// method by 1000 as the Swift call uses a double to set the date, with the
-	/// millis after the decimal place
+	/// nanoseconds after the decimal place
 	///
 	/// - Parameter millis: The number of milliseconds
 	public func setTimeInMillis(millis: Int64) {
@@ -76,18 +78,17 @@ public class SNCalendar {
 		date = Date(timeIntervalSince1970: TimeInterval(Int64(doubleMillis)));
 	}
 
-	/**
-	 * Adds or subtracts the specified amount of time to the given calendar field,
-	 * based on the calendar's rules. For example, to subtract 5 days from
-	 * the current time of the calendar, you can achieve it by calling:
-	 * <p>{@code add(SNCalendar.DAY_OF_MONTH, -5)}.
-	 * 
-	 * - Parameters:
-	 *   - field: The field to add to or subtract from see SNCalendar.Field.*
-	 *   - amount: The amount to add (or to subtract if negative)
-	 * - Returns: Void
-	 */
-
+	///
+	/// Adds or subtracts the specified amount of time to the given calendar field,
+	/// based on the calendar's rules. For example, to subtract 5 days from
+	/// the current time of the calendar, you can achieve it by calling:
+	/// `add(SNCalendar.Field.DAY_OF_MONTH, -5)`.
+	///
+	/// - Parameters:
+	///   - field: The field to add to or subtract from see SNCalendar.Field.*
+	///   - amount: The amount to add (or to subtract if negative)
+	///
+	/// - Returns: Void
 	public func add(_ field: Field, _ amount: Int) throws -> Void {
 		if (amount == 0) {
 			return;
@@ -138,7 +139,7 @@ public class SNCalendar {
 		}
 
 	}
-	
+
 	/// Get a specific field from the reference date
 	///
 	/// - Parameter field: The SNCalendar.Field enum field to get
